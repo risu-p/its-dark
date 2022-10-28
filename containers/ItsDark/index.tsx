@@ -24,6 +24,8 @@ const ItsDark: FC<IProps> = memo(({}) => {
   /* 海报节点（用于生成图片） */
   const posterRef = useRef<null | HTMLDivElement>(null);
 
+  /* 选择的图片file（用于上传） */
+  const [imgFile, setImgFile] = useState<null | File>(null);
   /* 选择的图片url */
   const [imgDataUrl, setImgDataUrl] = useState<undefined | string>(undefined);
   /* 生成的图片url */
@@ -37,10 +39,7 @@ const ItsDark: FC<IProps> = memo(({}) => {
   /**
    * 初始化
    */
-  useLayoutEffect(() => {
-    // 测试一下调接口
-    DarkApi.test();
-  }, []);
+  useLayoutEffect(() => {}, []);
 
   /*  读取选择的图片文件 */
   const readImgFile = useCallback((file: File) => {
@@ -58,6 +57,7 @@ const ItsDark: FC<IProps> = memo(({}) => {
       const file = event.target.files?.[0];
       if (file) {
         // 如果选了一张图片
+        setImgFile(file);
         readImgFile(file);
       }
     },
@@ -71,12 +71,22 @@ const ItsDark: FC<IProps> = memo(({}) => {
 
   /* 生成图片 */
   const generatePic = useCallback(async () => {
-    if (posterRef.current) {
-      const canvas = await html2canvas(posterRef.current);
-      const dataUrl = canvas.toDataURL("image/png");
-      setResultImgUrl(dataUrl);
+    if (imgFile !== null) {
+      // 构建 formData 对象，存储要上传的文件
+      const formData = new FormData();
+      formData.append("file", imgFile);
+      const res = await DarkApi.uploadImg(formData);
+      if (res.status) {
+        setResultImgUrl(res.data);
+      }
     }
-  }, []);
+
+    // if (posterRef.current) {
+    //   const canvas = await html2canvas(posterRef.current);
+    //   const dataUrl = canvas.toDataURL("image/png");
+    //   setResultImgUrl(dataUrl);
+    // }
+  }, [imgFile]);
 
   return (
     <div className={styles.wrap}>

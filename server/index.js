@@ -1,9 +1,9 @@
-const Koa = require("koa");
-const app = new Koa();
-
 const { darkRouter } = require("./routers/dark");
 const { allowCors } = require("./middlewares/cors");
 const { useTimeLogger } = require("./middlewares/log");
+
+const Koa = require("koa");
+const app = new Koa();
 
 /* 允许跨域 */
 app.use(allowCors);
