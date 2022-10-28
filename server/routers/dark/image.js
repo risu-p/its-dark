@@ -29,10 +29,18 @@ const asyncDarkGm = (buf) => {
         gmObj
           .resize(scaleWidth, scaleHeight) // 重新设置图片宽高
           .gravity("Center")
-          .background("#FFFFFF")
+          .background("#fff")
           .extent(CANVAS_WIDTH, CANVAS_WIDTH) // 居中画在画布上
           .colorspace("GRAY") // 灰度
-          .blur(4) // 模糊
+          .contrast(-2) // 对比度
+          .modulate(80) // 调节（亮度，基础是100）
+          /* 文本 */
+          .encoding("Unicode")
+          .font("./static/fonts/NotoSansSC-Bold.otf")
+          .fill('#fff')
+          .fontSize(30)
+          .drawText(0, 95, "前途一片黑暗啊！\n（絕望）", "Center")
+          .blur(2) // 模糊
           .toBuffer("PNG", function (err, buffer) {
             if (err) {
               reject(err);
