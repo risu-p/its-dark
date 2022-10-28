@@ -1,0 +1,16 @@
+{
+  "name": "its-dark-server",
+  "version": "1.0.0",
+  "description": "api for its-dark",
+  "main": "index.js",
+  "author": "risup",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "dev": "node index.js"
+  },
+  "dependencies": {
+    "koa": "^2.13.4",
+    "koa-router": "^12.0.0"
+  }
+}

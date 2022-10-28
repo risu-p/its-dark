@@ -1,0 +1,35 @@
+/* 用于mixin */
+@mixin fullImg {
+  img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+/* 文本省略号 */
+@mixin ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* 点击透明度 */
+@mixin activeOpacity {
+  &:active {
+    opacity: 0.9;
+  }
+}
+
+/* flex 居中 */
+@mixin flexCenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 清楚最后的margin */
+@mixin clearMargin {
+  &:last-of-type {
+    margin: 0;
+  }
+}
