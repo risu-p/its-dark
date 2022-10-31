@@ -8,7 +8,7 @@ export default function Document() {
     <Html>
       <Head>
         <title>一片黑暗啊</title>
-        <link rel="icon" href="/logo.png" />
+        <link rel="icon" href="/images/logo.png" />
       </Head>
       <body>
         <Main />
