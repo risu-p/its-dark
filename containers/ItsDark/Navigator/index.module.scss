@@ -1,0 +1,28 @@
+@import "@/styles/mixin.scss";
+@import "../common.module.scss";
+
+.wrap {
+  width: 100%;
+  pointer-events: none;
+  background-color: transparent;
+  box-sizing: border-box;
+  padding: 0 $pagePadding;
+}
+
+/* logo */
+.logo {
+  display: flex;
+  align-items: center;
+  @include activeOpacity;
+  padding: 10px 0;
+  &Img {
+    width: 24px;
+    height: 24px;
+    display: block;
+    margin-right: 4px;
+  }
+  &Text {
+    font-size: 12px;
+    color: #444;
+  }
+}

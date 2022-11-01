@@ -1,0 +1,32 @@
+@import "@/styles/mixin.scss";
+
+.btn {
+  // 按钮为了做得通用，宽高占满外部容器，自己本身没有宽高
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  @include activeOpacity;
+  &Shown {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    @include flexCenter;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background-color: #222;
+    &Text {
+      font-size: 18px;
+      color: #fff;
+    }
+  }
+  &Input {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 0;
+  }
+}

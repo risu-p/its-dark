@@ -1,28 +1,17 @@
 @import "@/styles/mixin.scss";
+@import "./common.module.scss";
 
-.wrap {
-  padding-top: 40px;
-  padding-bottom: 40px;
+.page {
+  width: 100%;
 }
 
-/* logo */
-.logo {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  display: flex;
-  align-items: center;
-  @include activeOpacity;
-  &Img {
-    width: 24px;
-    height: 24px;
-    display: block;
-    margin-right: 4px;
-  }
-  &Text {
-    font-size: 12px;
-    color: #444;
-  }
+/* 页面内容区域 */
+.content {
+  padding: 0px 0 40px 0;
+  margin: 0 auto;
+  // pc访问时，内容区域最大宽度也只占600
+  max-width: 600px;
+  position: relative;
 }
 
 /* 标题 */
@@ -30,79 +19,32 @@
   text-align: center;
   font-size: 24px;
   color: #222;
+  padding: 10px $pagePadding 0 $pagePadding;
+  margin-bottom: 20px;
 }
 
 /* 表单 */
 .form {
-  margin-top: 20px;
 }
-
 /* 选择图片按钮 */
-.selectImgBtn {
-  width: 80%;
+.select {
+  width: $pageWidth;
   height: 50px;
-  position: relative;
-  overflow: hidden;
-  border-radius: 10px;
   margin: 0 auto;
-  @include activeOpacity;
-  &Shown {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    @include flexCenter;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    // background-color: #acdb78;
-    background-color: #222;
-    &Text {
-      font-size: 18px;
-      color: #fff;
-    }
-  }
-  &Input {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    z-index: 0;
-  }
 }
-
 /* 重新选择按钮 */
 .reselect {
-  width: 80%;
+  width: $pageWidth;
   height: 50px;
   display: flex;
   margin: 0 auto;
-  overflow: hidden;
-  border-radius: 10px;
   &Left {
     flex: 1 1 0;
     position: relative;
-    &Shown {
-      @include activeOpacity;
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: 1;
-      @include flexCenter;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      // background-color: #acdb78;
-      background-color: #222;
-      &Text {
-        font-size: 18px;
-        color: #fff;
-      }
-    }
-    &Input {
-      width: 100%;
-      height: 100%;
-      position: relative;
-      z-index: 0;
+    /* 覆盖样式 */
+    .reselectImgBtn {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
     }
   }
   &Right {
@@ -111,159 +53,18 @@
     @include activeOpacity;
     @include flexCenter;
     padding: 0 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    overflow: hidden;
     &Text {
       color: #222;
     }
   }
 }
 
-/* 展示区域 */
-// .posterWrap {
-//   width: fit-content;
-//   height: fit-content;
-//   position: relative;
-//   margin: 20px auto 0 auto;
-// }
-/* 海报 */
-// .poster {
-//   width: 300px;
-//   height: 300px;
-//   background-color: #eee;
-//   //   background-color: #222;
-//   position: relative;
-//   filter: blur(1.2px);
-//   overflow: hidden;
-//   z-index: 0;
-
-//   /* 图片 */
-//   &Img {
-//     width: 100%;
-//     height: 100%;
-//     background-size: cover;
-//     background-repeat: no-repeat;
-//     background-position: center center;
-//     filter: grayscale(1) contrast(1.5) brightness(1.2) blur(1px);
-//     z-index: 0;
-//   }
-//   /* 蒙层 */
-//   &Mask {
-//     width: 100%;
-//     height: 100%;
-//     position: absolute;
-//     top: 0;
-//     left: 0;
-//     z-index: 3;
-//     background-color: rgba(0, 0, 0, 0.4);
-//   }
-//   /* 文字 */
-//   &Desc {
-//     width: 100%;
-//     box-sizing: border-box;
-//     padding: 0 10px 15px 10px;
-//     position: absolute;
-//     bottom: 0;
-//     left: 0;
-//     z-index: 5;
-//     &Text {
-//       text-align: center;
-//       color: #fff;
-//       font-size: 30px;
-//       line-height: 30px;
-//       margin-bottom: 12px;
-//       @include clearMargin;
-//       //   font-weight: bold;
-//     }
-//   }
-//   /* 光线 */
-//   &Light {
-//     /* 从右上角观察子元素 */
-//     // html2canvas 不支持3d
-//     // transform-style: preserve-3d;
-//     // perspective: 500px;
-//     // perspective-origin: right top;
-//     width: 100%;
-//     height: 100%;
-//     position: absolute;
-//     top: 0;
-//     left: 0;
-//     z-index: 10;
-//     &Item {
-//       width: 1000px;
-//       height: 0px;
-//       position: absolute;
-//       top: -100px;
-//       right: -100px;
-//       background-color: #fff;
-//       box-shadow: 0 0 25px 6px #fff;
-//       opacity: 1;
-//       transform-origin: right center;
-//       $rotateY: 40deg;
-//       transform: rotateZ(-24deg) rotateY($rotateY);
-
-//       &:global(.is-1) {
-//         transform: rotateZ(-32deg) rotateY($rotateY);
-//       }
-//       &:global(.is-2) {
-//         transform: rotateZ(-42deg) rotateY($rotateY);
-//       }
-//       &:global(.is-3) {
-//         transform: rotateZ(-53deg) rotateY($rotateY);
-//       }
-//       &:global(.is-4) {
-//         transform: rotateZ(-68deg) rotateY($rotateY);
-//       }
-//     }
-//   }
-// }
-/* 清空按钮 */
-.delete {
-  width: 40px;
-  height: 20px;
-  position: absolute;
-  top: 5px;
-  right: 5px;
-  background-color: #222;
-  border-radius: 5px;
-  @include activeOpacity;
-  @include flexCenter;
-  &Text {
-    font-size: 12px;
-    color: #fff;
-  }
-}
-
-/* 生成 */
-// .generateBtn {
-//   @include flexCenter;
-//   width: 80%;
-//   height: 50px;
-//   border-radius: 10px;
-//   box-sizing: border-box;
-//   margin: 20px auto 20px auto;
-//   &:active {
-//     opacity: 0.7;
-//   }
-//   border: 1px solid #222;
-//   &Text {
-//     font-size: 18px;
-//     color: #222;
-//   }
-// }
-
-/* 结果 */
-.result {
-  margin-top: 20px;
-  &Img {
-    width: 300px;
-    height: 300px;
-    margin: 0 auto;
-    display: block;
-    pointer-events: all;
-  }
-  &Comment {
-    text-align: center;
-    margin-top: 4px;
-    font-size: 14px;
-    color: #888;
-  }
+/*
+ * 媒体查询，兼容pc、移动端
+ */
+/* 宽度小于500px时，应用的样式（移动端） */
+@media screen and (max-width: 500px) {
 }

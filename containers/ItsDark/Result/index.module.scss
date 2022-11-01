@@ -1,0 +1,55 @@
+@import "@/styles/mixin.scss";
+@import "../common.module.scss";
+
+/* 结果 */
+.result {
+  margin-top: 20px;
+  width: 100%;
+  &Pic {
+    width: $pageWidth;
+    padding-bottom: $pageWidth;
+    margin: 0 auto;
+    position: relative;
+    box-sizing: content-box;
+    &Img {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
+      pointer-events: all;
+    }
+  }
+  &Comment {
+    padding: 0 $pagePadding;
+    text-align: center;
+    margin-top: 4px;
+    font-size: 14px;
+    color: #888;
+  }
+  &Btn {
+    width: $pageWidth;
+    margin: 10px auto 0 auto;
+    height: 50px;
+    border-radius: 10px;
+    @include flexCenter;
+    @include activeOpacity;
+    background-color: #aad46e;
+    cursor: pointer;
+    &:global(.is-disable) {
+      filter: grayscale(1);
+      cursor: not-allowed;
+      &:active {
+        opacity: 1;
+      }
+      :local(.resultBtnText) {
+        color: #fff;
+      }
+    }
+    &Text {
+      font-size: 18px;
+      color: #222;
+    }
+  }
+}
