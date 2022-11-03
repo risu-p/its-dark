@@ -5,6 +5,15 @@
 .result {
   margin-top: 20px;
   width: 100%;
+
+  /* 图片最大400px（因为图片始终是页面宽的80%，故屏幕为500px时，就是最大尺寸了） */
+  @media screen and (min-width: 500px) {
+    .resultPic {
+      width: 400px;
+      height: 400px;
+      padding-bottom: 0;
+    }
+  }
   &Pic {
     width: $pageWidth;
     padding-bottom: $pageWidth;
