@@ -3,7 +3,6 @@
 
 .wrap {
   width: 100%;
-  pointer-events: none;
   background-color: transparent;
   box-sizing: border-box;
   padding: 0 14px;
@@ -19,6 +18,7 @@
   align-items: center;
   @include activeOpacity;
   padding: 10px 0;
+  cursor: pointer;
   &Img {
     width: 19px;
     height: 19px;
@@ -35,6 +35,7 @@
 
 /* 分享 */
 .share {
+  cursor: pointer;
   &Img {
     width: 24px;
     height: 24px;

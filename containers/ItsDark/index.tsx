@@ -17,6 +17,8 @@ import SelectImgBtn from "./components/SelectImgBtn";
 import ResultModule from "./Result";
 import Image from "next/image";
 import title from "@/public/images/its-dark/title.png";
+import AboutModal from "./AboutModal";
+import { useModal } from "./components/Modal/hooks";
 
 type IProps = {};
 
@@ -66,12 +68,19 @@ const ItsDark: FC<IProps> = memo(({}) => {
     setResultImgUrl("");
   }, []);
 
+  /* 关于弹窗 */
+  const {
+    modalVisible: aboutModalVisible,
+    openModal: openAboutModal,
+    closeModal: closeAboutModal,
+  } = useModal();
+
   return (
     <div className={styles.page}>
       {/* 内容区域，pc端访问时有最大宽度限制 */}
       <div className={styles.content}>
         {/* 顶部横条 */}
-        <Navigator />
+        <Navigator openAboutModal={openAboutModal} />
 
         {/* 标题 */}
         <div className={styles.title}>
@@ -110,6 +119,9 @@ const ItsDark: FC<IProps> = memo(({}) => {
 
         {/* 结果模块 */}
         <ResultModule resultImgUrl={resultImgUrl} />
+
+        {/* 关于弹窗 */}
+        <AboutModal visible={aboutModalVisible} onClose={closeAboutModal} />
       </div>
     </div>
   );

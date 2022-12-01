@@ -5,16 +5,18 @@ import share from "@/public/images/its-dark/share.png";
 import React, { FC, memo, useCallback, useEffect, useState } from "react";
 import styles from "./index.module.scss";
 
-type IProps = {};
+type IProps = {
+  openAboutModal: () => void;
+};
 
 /**
  * 顶部导航栏
  */
-const Navigator: FC<IProps> = memo(({}) => {
+const Navigator: FC<IProps> = memo(({ openAboutModal }) => {
   return (
     <div className={styles.wrap}>
       {/* logo */}
-      <div className={styles.logo}>
+      <div className={styles.logo} onClick={openAboutModal}>
         <Image src={logo} className={styles.logoImg} alt="logo" />
         <div className={styles.logoText}>关于我们</div>
       </div>
