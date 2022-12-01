@@ -15,7 +15,7 @@ darkRouter.post(
     multipart: true, // 也解析文件类型
     formidable: {
       multiples: false,
-      maxFieldsSize: 10 * 1024 * 1024, // 最大10m
+      maxFieldsSize: 4 * 1024 * 1024, // 最大10m（其实该字段不会限制住body中的file大小）
     },
   }),
   async (ctx) => {

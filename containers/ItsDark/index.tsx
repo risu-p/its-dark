@@ -19,6 +19,8 @@ import Image from "next/image";
 import title from "@/public/images/its-dark/title.png";
 import AboutModal from "./AboutModal";
 import { useModal } from "./components/Modal/hooks";
+import { MAX_FILE_SIZE } from "./const";
+import { Toast } from "antd-mobile";
 
 type IProps = {};
 
@@ -27,6 +29,9 @@ type IProps = {};
  * (使用媒体查询，支持 pc、移动端 访问)
  */
 const ItsDark: FC<IProps> = memo(({}) => {
+  const selectInputRef = useRef<HTMLInputElement | null>(null);
+  const reselectInputRef = useRef<HTMLInputElement | null>(null);
+
   /* 生成的图片url */
   const [resultImgUrl, setResultImgUrl] = useState<undefined | string>(
     undefined
@@ -55,6 +60,19 @@ const ItsDark: FC<IProps> = memo(({}) => {
   const onFileChange: React.ChangeEventHandler<HTMLInputElement> = useCallback(
     (event) => {
       const file = event.target.files?.[0];
+      /* 选择图片时，限制文件大小 */
+      if (file?.size && file.size > MAX_FILE_SIZE * 1024 * 1024) {
+        Toast.show({
+          content: `请上传小于${MAX_FILE_SIZE}M的图片`,
+          afterClose: () => {
+            console.log("after");
+          },
+        });
+        // 清空input值
+        selectInputRef.current && (selectInputRef.current.value = "");
+        reselectInputRef.current && (reselectInputRef.current.value = "");
+        return;
+      }
       if (file) {
         // 选择了一张图片，上传给服务器处理
         generatePic(file);
@@ -92,7 +110,11 @@ const ItsDark: FC<IProps> = memo(({}) => {
           {/* 选择图片按钮 */}
           {!resultImgUrl ? (
             <div className={styles.select}>
-              <SelectImgBtn text="请选择一张图片" onChange={onFileChange} />
+              <SelectImgBtn
+                text="请选择一张图片"
+                onChange={onFileChange}
+                ref={selectInputRef}
+              />
             </div>
           ) : (
             <div className={styles.reselect}>
@@ -103,6 +125,7 @@ const ItsDark: FC<IProps> = memo(({}) => {
                   theme={{
                     btn: styles.reselectImgBtn,
                   }}
+                  ref={reselectInputRef}
                 />
               </div>
               <div className={styles.reselectRight} onClick={deleteSelectImg}>
