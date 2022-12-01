@@ -63,6 +63,9 @@ const ItsDark: FC<IProps> = observer(({}) => {
         setIsLoading(false);
       } else {
         setIsLoading(false);
+        Toast.show({
+          content: `图片处理失败：${res.description}`,
+        });
       }
     } else {
       setIsLoading(false);
@@ -78,9 +81,6 @@ const ItsDark: FC<IProps> = observer(({}) => {
       if (file?.size && file.size > MAX_FILE_SIZE * 1024 * 1024) {
         Toast.show({
           content: `请上传小于${MAX_FILE_SIZE}M的图片`,
-          afterClose: () => {
-            console.log("after");
-          },
         });
         // 清空input值
         selectInputRef.current && (selectInputRef.current.value = "");

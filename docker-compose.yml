@@ -1,0 +1,11 @@
+version: "3.7"
+
+services:
+  app:
+    build: .
+    ports:
+      - 9010:9010
+  server:
+    build: ./server
+    ports:
+      - 9011:9011

@@ -29,10 +29,10 @@ darkRouter.post(
         status: true,
         data: base64,
       };
-    } catch (e) {
+    } catch (err) {
       ctx.body = {
         status: false,
-        description: `图片处理失败：${err.message}`,
+        description: `${err.message}`,
       };
     }
   }

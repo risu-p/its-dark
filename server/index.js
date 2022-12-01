@@ -13,7 +13,7 @@ app.use(useTimeLogger);
 /* 路由 */
 app.use(darkRouter.routes()).use(darkRouter.allowedMethods());
 
-const PORT = 8001;
+const PORT = 9011;
 
 app.listen(PORT, () => {
   console.log(`【koa】已在 ${PORT} 端口启动`);

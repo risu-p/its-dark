@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev -p 8000",
-    "build": "next build",
+    "build": "next build && mkdir dist && mv .next/standalone dist/standalone && mv .next/static dist/static && tar -cvf dist.tar dist && rm -rf dist",
     "start": "next start",
     "lint": "next lint"
   },
