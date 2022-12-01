@@ -171,7 +171,7 @@ const ItsDark: FC<IProps> = observer(({}) => {
         <ResultModule resultImgUrl={resultImgUrl} />
 
         {/* 底部：友情链接 */}
-        <div className={styles.footer}>
+        {/* <div className={styles.footer}>
           <div className={styles.footerLabel}>友情链接</div>
           <div className={styles.footerList}>
             <a href="https://www.risu-p.com" target="_blank">
@@ -181,7 +181,7 @@ const ItsDark: FC<IProps> = observer(({}) => {
               wiki
             </a>
           </div>
-        </div>
+        </div> */}
 
         {/* 关于弹窗 */}
         <AboutModal visible={aboutModalVisible} onClose={closeAboutModal} />

@@ -23,7 +23,12 @@ const AboutModal: FC<IProps> = memo(({ visible, onClose }) => {
           <div className={styles.descText}>
             我们是一个特别厉害的团队，每个产品都是这么棒棒的，还不快来使用我们！
           </div>
-          <div className={styles.descText}>研发：栗鼠p</div>
+          <div className={styles.descText}>
+            研发：
+            <a href="https://www.risu-p.com" target="_blank">
+              栗鼠p
+            </a>
+          </div>
           <div className={styles.descText}>设计：皮蛋瘦肉粥</div>
           <div className={styles.descText}>合作联系：risup0812@163.com</div>
         </div>
