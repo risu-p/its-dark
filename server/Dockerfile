@@ -6,8 +6,9 @@ WORKDIR /app
 COPY ./ ./
 # 安装依赖
 RUN apt-get update && \
-    apt-get install -y graphicsmagick imagemagick
-RUN npm install
+    apt-get install -y graphicsmagick imagemagick && \
+    npm config set registry https://registry.npm.taobao.org/ && \
+    npm install
 # 即可运行
 EXPOSE 9011
 
