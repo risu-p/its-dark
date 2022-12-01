@@ -1,0 +1,24 @@
+@import "@/styles/mixin.scss";
+
+.wrap {
+  :global {
+    .adm-mask {
+      background-color: rgba(0, 0, 0, 0) !important;
+    }
+    .adm-center-popup-body {
+      margin: 0 auto;
+      width: fit-content;
+      height: fit-content;
+      background-color: transparent;
+    }
+  }
+}
+
+.panel {
+  width: 70px;
+  height: 70px;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.6);
+  @include flexCenter();
+  font-size: 16px;
+}

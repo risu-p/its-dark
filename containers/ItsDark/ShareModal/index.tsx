@@ -1,6 +1,8 @@
 import qrcode from "@/public/images/its-dark/qrcode.png";
 import wxMiniProgram from "@/public/images/its-dark/wxMiniProgram.png";
+import { darkStore } from "@/stores/dark";
 import { downloadImg } from "@/utils/image";
+import { observer } from "mobx-react";
 
 import Image from "next/image";
 import React, { FC, memo, useCallback, useEffect, useState } from "react";
@@ -15,7 +17,11 @@ type IProps = {
 /**
  * 分享 弹窗
  */
-const ShareModal: FC<IProps> = memo(({ visible, onClose }) => {
+const ShareModal: FC<IProps> = observer(({ visible, onClose }) => {
+  const {
+    frontStore: { setIsLoading },
+  } = darkStore;
+
   const saveQrcode = useCallback(() => {
     downloadImg(qrcode.src, "一片黑暗啊表情包生成器");
   }, []);

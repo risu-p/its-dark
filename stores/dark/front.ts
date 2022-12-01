@@ -1,4 +1,4 @@
-import { makeObservable, observable } from "mobx";
+import { action, makeObservable, observable } from "mobx";
 import { DarkStore } from ".";
 
 /**
@@ -15,5 +15,10 @@ export class FrontStore {
   /**
    * 数据
    */
-  @observable empty: null = null;
+  /* 显示全局的loading，目前一个变量能满足 */
+  @observable isLoading: boolean = false;
+
+  @action setIsLoading = (nextVal: boolean) => {
+    this.isLoading = nextVal;
+  };
 }
