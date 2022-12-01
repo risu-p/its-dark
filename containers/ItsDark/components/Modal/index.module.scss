@@ -1,17 +1,38 @@
 @import "@/styles/mixin.scss";
 
 .wrap {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 9999;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  @include flexCenter;
+  :global {
+    .adm-mask {
+      background-color: rgba(0, 0, 0, 0.5) !important;
+    }
+  }
 }
 
 .panel {
-  width: 75%;
   background-color: #fff;
+  position: relative;
+
+  &Body {
+  }
+  &Footer {
+    width: 100%;
+    height: 45px;
+    background: #222222;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include activeOpacity;
+    &Icon {
+      width: 15px;
+      height: 15px;
+      display: block;
+      margin-right: 6px;
+    }
+    &Text {
+      font-size: 16px;
+      font-family: PingFangSC-Medium, PingFang SC;
+      font-weight: 500;
+      color: #ffffff;
+    }
+  }
 }
