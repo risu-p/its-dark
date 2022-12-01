@@ -170,6 +170,19 @@ const ItsDark: FC<IProps> = observer(({}) => {
         {/* 结果模块 */}
         <ResultModule resultImgUrl={resultImgUrl} />
 
+        {/* 底部：友情链接 */}
+        <div className={styles.footer}>
+          <div className={styles.footerLabel}>友情链接</div>
+          <div className={styles.footerList}>
+            <a href="https://www.risu-p.com" target="_blank">
+              博客
+            </a>
+            <a href="https://wiki.risu-p.com" target="_blank">
+              wiki
+            </a>
+          </div>
+        </div>
+
         {/* 关于弹窗 */}
         <AboutModal visible={aboutModalVisible} onClose={closeAboutModal} />
         {/* 分享弹窗 */}

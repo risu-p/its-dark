@@ -4,6 +4,7 @@
 /* 结果 */
 .result {
   width: 100%;
+  margin-bottom: 40px;
 
   /* 图片最大400px（因为图片始终是页面宽的80%，故屏幕为500px时，就是最大尺寸了） */
   @media screen and (min-width: 500px) {
