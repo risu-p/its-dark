@@ -21,6 +21,7 @@ import AboutModal from "./AboutModal";
 import { useModal } from "./components/Modal/hooks";
 import { MAX_FILE_SIZE } from "./const";
 import { Toast } from "antd-mobile";
+import ShareModal from "./ShareModal";
 
 type IProps = {};
 
@@ -93,12 +94,22 @@ const ItsDark: FC<IProps> = memo(({}) => {
     closeModal: closeAboutModal,
   } = useModal();
 
+  /* 分享弹窗 */
+  const {
+    modalVisible: shareModalVisible,
+    openModal: openShareModal,
+    closeModal: closeShareModal,
+  } = useModal();
+
   return (
     <div className={styles.page}>
       {/* 内容区域，pc端访问时有最大宽度限制 */}
       <div className={styles.content}>
         {/* 顶部横条 */}
-        <Navigator openAboutModal={openAboutModal} />
+        <Navigator
+          openAboutModal={openAboutModal}
+          openShareModal={openShareModal}
+        />
 
         {/* 标题 */}
         <div className={styles.title}>
@@ -145,6 +156,8 @@ const ItsDark: FC<IProps> = memo(({}) => {
 
         {/* 关于弹窗 */}
         <AboutModal visible={aboutModalVisible} onClose={closeAboutModal} />
+        {/* 分享弹窗 */}
+        <ShareModal visible={shareModalVisible} onClose={closeShareModal} />
       </div>
     </div>
   );

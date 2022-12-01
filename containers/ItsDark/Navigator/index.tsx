@@ -7,12 +7,13 @@ import styles from "./index.module.scss";
 
 type IProps = {
   openAboutModal: () => void;
+  openShareModal: () => void;
 };
 
 /**
  * 顶部导航栏
  */
-const Navigator: FC<IProps> = memo(({ openAboutModal }) => {
+const Navigator: FC<IProps> = memo(({ openAboutModal, openShareModal }) => {
   return (
     <div className={styles.wrap}>
       {/* logo */}
@@ -21,7 +22,7 @@ const Navigator: FC<IProps> = memo(({ openAboutModal }) => {
         <div className={styles.logoText}>关于我们</div>
       </div>
       {/* 分享 */}
-      <div className={styles.share}>
+      <div className={styles.share} onClick={openShareModal}>
         <Image src={share} className={styles.shareImg} alt="share" />
       </div>
     </div>
