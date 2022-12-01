@@ -3,7 +3,6 @@
 
 /* 结果 */
 .result {
-  margin-top: 20px;
   width: 100%;
 
   /* 图片最大400px（因为图片始终是页面宽的80%，故屏幕为500px时，就是最大尺寸了） */
@@ -30,21 +29,20 @@
       pointer-events: all;
     }
   }
-  &Comment {
-    padding: 0 $pagePadding;
-    text-align: center;
-    margin-top: 4px;
-    font-size: 14px;
-    color: #888;
-  }
+  // &Comment {
+  //   padding: 0 $pagePadding;
+  //   text-align: center;
+  //   margin-top: 4px;
+  //   font-size: 12px;
+  //   color: #888;
+  // }
   &Btn {
     width: $pageWidth;
-    margin: 10px auto 0 auto;
+    margin: 20px auto 0 auto;
     height: 50px;
-    border-radius: 10px;
+    border: 2px solid #222222;
     @include flexCenter;
     @include activeOpacity;
-    background-color: #aad46e;
     cursor: pointer;
     &:global(.is-disable) {
       filter: grayscale(1);
@@ -53,12 +51,14 @@
         opacity: 1;
       }
       :local(.resultBtnText) {
-        color: #fff;
+        // color: #fff;
       }
     }
     &Text {
-      font-size: 18px;
-      color: #222;
+      font-size: 16px;
+      font-family: PingFangSC-Medium, PingFang SC;
+      font-weight: 500;
+      color: #222222;
     }
   }
 }

@@ -40,7 +40,7 @@ const asyncDarkGm = (buf) => {
           .fill('#fff')
           .fontSize(30)
           .drawText(0, 95, "前途一片黑暗啊！\n（絕望）", "Center")
-          .blur(2) // 模糊
+          .blur(0.8,0.8) // 模糊
           .toBuffer("PNG", function (err, buffer) {
             if (err) {
               reject(err);

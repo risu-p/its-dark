@@ -42,16 +42,16 @@ const ResultModule: FC<IProps> = observer(({ resultImgUrl }) => {
           className={styles.resultPicImg}
         />
       </div>
-      <div className={styles.resultComment}>
+      {/* <div className={styles.resultComment}>
         {isMobile === undefined || isMobile ? "长按" : "右键"}可保存至相册
-      </div>
+      </div> */}
       <div
         className={classNames(styles.resultBtn, {
           //   ["is-disable"]: !resultImgUrl,
         })}
         onClick={onSaveClick}
       >
-        <div className={styles.resultBtnText}>下载图片</div>
+        <div className={styles.resultBtnText}>保存表情</div>
       </div>
     </div>
   );

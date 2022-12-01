@@ -15,6 +15,8 @@ import { DarkApi } from "@/services/its-dark";
 import Navigator from "./Navigator";
 import SelectImgBtn from "./components/SelectImgBtn";
 import ResultModule from "./Result";
+import Image from "next/image";
+import title from "@/public/images/its-dark/title.png";
 
 type IProps = {};
 
@@ -27,9 +29,6 @@ const ItsDark: FC<IProps> = memo(({}) => {
   const [resultImgUrl, setResultImgUrl] = useState<undefined | string>(
     undefined
   );
-
-  /* 页面背景颜色 */
-  useHtmlBgColorInit("#eee");
 
   /**
    * 初始化
@@ -75,7 +74,9 @@ const ItsDark: FC<IProps> = memo(({}) => {
         <Navigator />
 
         {/* 标题 */}
-        <div className={styles.title}>“一片黑暗啊”表情包生成</div>
+        <div className={styles.title}>
+          <Image src={title} alt="title" className={styles.titleImg} />
+        </div>
 
         {/* 表单部分 */}
         <div className={styles.form}>
@@ -100,6 +101,11 @@ const ItsDark: FC<IProps> = memo(({}) => {
               </div>
             </div>
           )}
+        </div>
+
+        {/* 广告位 */}
+        <div className={styles.ad}>
+          <div>广告位招租（这里是无敌帅气的广告）</div>
         </div>
 
         {/* 结果模块 */}

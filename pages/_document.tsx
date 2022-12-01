@@ -7,7 +7,7 @@ export default function Document() {
   return (
     <Html>
       <Head>
-        <title>一片黑暗啊</title>
+        <title>一片黑暗啊表情包生成器</title>
         <link rel="icon" href="/images/logo.png" />
       </Head>
       <body>

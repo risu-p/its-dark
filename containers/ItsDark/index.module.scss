@@ -16,15 +16,18 @@
 
 /* 标题 */
 .title {
-  text-align: center;
-  font-size: 24px;
-  color: #222;
-  padding: 10px $pagePadding 0 $pagePadding;
-  margin-bottom: 20px;
+  margin: 30px 0;
+  &Img {
+    width: 291px;
+    height: 26px;
+    margin: 0 auto;
+    display: block;
+  }
 }
 
 /* 表单 */
 .form {
+  margin: 0 auto 20px auto;
 }
 /* 选择图片按钮 */
 .select {
@@ -38,16 +41,13 @@
   height: 50px;
   display: flex;
   margin: 0 auto;
+  border: 2px solid #222222;
   &Left {
     flex: 1 1 0;
     position: relative;
-    /* 覆盖样式 */
-    .reselectImgBtn {
-      border-top-right-radius: 0;
-      border-bottom-right-radius: 0;
-    }
   }
   &Right {
+    width: 90px;
     flex: 0 0 auto;
     background-color: #fff;
     @include activeOpacity;
@@ -57,9 +57,26 @@
     border-bottom-right-radius: 10px;
     overflow: hidden;
     &Text {
-      color: #222;
+      font-size: 16px;
+      font-family: PingFangSC-Medium, PingFang SC;
+      font-weight: 500;
+      color: #222222;
     }
   }
+}
+
+/* 广告位 */
+.ad {
+  width: $pageWidth;
+  height: 100px;
+  margin: 0 auto 20px auto;
+  @include flexCenter;
+  background-color: rgb(245, 245, 245);
+
+  font-size: 16px;
+  font-family: PingFangSC-Regular, PingFang SC;
+  // font-weight: 500;
+  color: #666;
 }
 
 /*
