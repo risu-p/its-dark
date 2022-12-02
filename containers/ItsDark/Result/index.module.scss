@@ -30,16 +30,16 @@
       pointer-events: all;
     }
   }
-  // &Comment {
-  //   padding: 0 $pagePadding;
-  //   text-align: center;
-  //   margin-top: 4px;
-  //   font-size: 12px;
-  //   color: #888;
-  // }
+  &Comment {
+    padding: 0 $pagePadding;
+    text-align: center;
+    margin: 6px 0 0 0;
+    font-size: 12px;
+    color: #aaa;
+  }
   &Btn {
     width: $pageWidth;
-    margin: 20px auto 0 auto;
+    margin: 10px auto 0 auto;
     height: 50px;
     border: 2px solid #222222;
     @include flexCenter;

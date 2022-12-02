@@ -42,9 +42,9 @@ const ResultModule: FC<IProps> = observer(({ resultImgUrl }) => {
           className={styles.resultPicImg}
         />
       </div>
-      {/* <div className={styles.resultComment}>
-        {isMobile === undefined || isMobile ? "长按" : "右键"}可保存至相册
-      </div> */}
+      <div className={styles.resultComment}>
+        {isMobile === undefined || isMobile ? "长按" : "右键"}图片可保存至相册
+      </div>
       <div
         className={classNames(styles.resultBtn, {
           //   ["is-disable"]: !resultImgUrl,
