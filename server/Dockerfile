@@ -9,8 +9,8 @@ ADD ./docker/source.list /etc/apt
 RUN apt-get update && \
     apt-get install -y graphicsmagick imagemagick
 # npm安装项目依赖（需要先换源）
-RUN npm config set registry https://registry.npm.taobao.org/ && \
-    npm install
+RUN npm install -g cnpm --registry=https://registry.npm.taobao.org
+RUN cnpm install
 # 即可运行
 EXPOSE 9011
 
