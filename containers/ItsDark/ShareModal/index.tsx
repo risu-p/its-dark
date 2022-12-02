@@ -1,6 +1,7 @@
 import qrcode from "@/public/images/its-dark/qrcode.png";
 import wxMiniProgram from "@/public/images/its-dark/wxMiniProgram.png";
 import { darkStore } from "@/stores/dark";
+import { systemStore } from "@/stores/system";
 import { downloadImg } from "@/utils/image";
 import { observer } from "mobx-react";
 
@@ -21,6 +22,7 @@ const ShareModal: FC<IProps> = observer(({ visible, onClose }) => {
   const {
     frontStore: { setIsLoading },
   } = darkStore;
+  const { isMobile } = systemStore;
 
   const saveQrcode = useCallback(() => {
     downloadImg(qrcode.src, "一片黑暗啊表情包生成器");
@@ -45,7 +47,9 @@ const ShareModal: FC<IProps> = observer(({ visible, onClose }) => {
             height={11}
             className={styles.saveIcon}
           />
-          <div className={styles.saveText}>保存二维码</div>
+          <div className={styles.saveText}>
+            {isMobile === undefined || isMobile ? "长按" : "右键"}保存二维码
+          </div>
         </div>
       </div>
     </Modal>
