@@ -59,14 +59,22 @@ const ItsDark: FC<IProps> = observer(({}) => {
       const formData = new FormData();
       formData.append("file", file);
       // 调接口
-      const res = await DarkApi.uploadImg(formData);
-      if (res.status) {
-        setResultImgUrl(res.data);
-        setIsLoading(false);
-      } else {
+      try {
+        const res = await DarkApi.uploadImg(formData);
+        if (res.status) {
+          setResultImgUrl(res.data);
+          setIsLoading(false);
+        } else {
+          throw Error(res.description);
+        }
+      } catch (e: any) {
+        let errMsg = e.message || "";
+        if (errMsg.indexOf("413") !== -1) {
+          errMsg = `请上传小于${MAX_FILE_SIZE}M的图片`;
+        }
         setIsLoading(false);
         Toast.show({
-          content: `图片处理失败：${res.description}`,
+          content: `图片处理失败：${errMsg}`,
         });
       }
     } else {

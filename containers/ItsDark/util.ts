@@ -57,14 +57,18 @@ export const changeImgOrientation = (
           //     ctx.drawImage(image, 0, 0, width, height);
           //   }
         }
-        canvas.toBlob((blob) => {
-          console.log("【处理完成】Blob", blob);
-          if (blob) {
-            const resFile = new File([blob], file.name);
-            console.log("处理完成【File】", resFile);
-            resolve(resFile);
-          }
-        });
+
+        canvas.toBlob(
+          (blob) => {
+            if (blob) {
+              const resFile = new File([blob], file.name);
+              console.log("处理完成【File】", resFile);
+              resolve(resFile);
+            }
+          },
+          "image/jpeg",
+          0.8
+        );
       };
       image.src = fileUrl;
     };
