@@ -25,6 +25,8 @@ import ShareModal from "./ShareModal";
 import GlobalLoading from "@/components/GlobalLoading";
 import { observer } from "mobx-react";
 import { darkStore } from "@/stores/dark";
+import EXIF from "exif-js";
+import { changeImgOrientation } from "./util";
 
 type IProps = {};
 
@@ -77,6 +79,7 @@ const ItsDark: FC<IProps> = observer(({}) => {
     (event) => {
       setIsLoading(true);
       const file = event.target.files?.[0];
+
       /* 选择图片时，限制文件大小 */
       if (file?.size && file.size > MAX_FILE_SIZE * 1024 * 1024) {
         Toast.show({
@@ -88,9 +91,33 @@ const ItsDark: FC<IProps> = observer(({}) => {
         setIsLoading(false);
         return;
       }
+
+      /* 选择了一张图片 */
       if (file) {
-        // 选择了一张图片，上传给服务器处理
-        generatePic(file);
+        // 解析exif信息，得到图片的旋转信息（就是要用到 ts-ignore，exif可以直接接受 File、Img 类型）
+        // @ts-ignore
+        EXIF.getData(file, function () {
+          // getData执行完后，图像会多一个exifdata属性。可通过该属性获取exif信息
+          // orientation: 图像方向（如果exif属性被消除了，会是undefined）
+          // @ts-ignore
+          const orientation = EXIF.getTag(this, "Orientation") as
+            | undefined
+            | number;
+          console.log("【图片信息】Orientation", orientation);
+          /**
+           * Orientation
+           * 1：ios顶部在左时，横排。正常方向。不需处理
+           * 6：ios竖直拍摄时。需要顺时针转90度
+           * 3：ios顶部在右时，横拍。需顺时针转180度
+           * 8：ios倒着竖直拍时。需顺时针转270度
+           * undefined：图片被消除了exif信息。不需处理
+           * 2、4、5、7：出现在相机设置了镜像模式时，通常不会设置，故暂不做处理
+           */
+          changeImgOrientation(file, orientation).then((resFile) => {
+            // 上传给服务器处理
+            generatePic(resFile);
+          });
+        });
       } else {
         setIsLoading(false);
       }

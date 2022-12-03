@@ -21,3 +21,20 @@ export const useIsMobile = (store: {
     checkIsMobile();
   }, []);
 };
+
+/**
+ * 启动vconsole
+ */
+export const useVConsole = () => {
+  useLayoutEffect(() => {
+    if (window.location.href.toLowerCase().indexOf("istest") !== -1) {
+      // vconsole只能在客户端引入，在服务端连import都不行
+      import("vconsole").then((res) => {
+        const VConsole = res?.default;
+        if (VConsole) {
+          const vConsole = new VConsole();
+        }
+      });
+    }
+  }, []);
+};
