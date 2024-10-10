@@ -9,6 +9,7 @@
 - next 启动：
 ```
 yarn dev
+访问 http://localhost:8000/dark
 ```
 
 - koa 启动：

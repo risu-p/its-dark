@@ -2,6 +2,7 @@ const withTM = require("next-transpile-modules")(["antd-mobile"]);
 
 /** @type {import('next').NextConfig} */
 const nextConfig = withTM({
+  basePath: '/dark',
   reactStrictMode: true,
   swcMinify: true,
   output: "standalone", // 最小化构建
